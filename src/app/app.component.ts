@@ -30,32 +30,28 @@ export class AppComponent {
     refresh: Subject<any> = new Subject();
     events: CalendarEvent[] = [
         {
-            start: subDays(startOfDay(new Date()), 1),
-            end: addDays(new Date(), 1),
-            title: 'A 3 day event',
+            start: addHours(startOfDay(new Date()), 9),
+            end: addHours(startOfDay(new Date()), 10),
+            title: 'Patient A',
+            color: colors.yellow,
+        },
+        {
+            start: addHours(startOfDay(new Date()), 10),
+            end: addHours(startOfDay(new Date()), 11),
+            title: 'Patient B',
+            color: colors.yellow,
+        },
+        {
+            start: addHours(startOfDay(new Date()), 9.5),
+            end: addHours(startOfDay(new Date()), 10.5),
+            title: 'Simoultaneous',
             color: colors.red,
         },
         {
-            start: startOfDay(new Date()),
-            title: 'An event with no end date',
-            color: colors.yellow,
-        },
-        {
-            start: subDays(endOfMonth(new Date()), 3),
-            end: addDays(endOfMonth(new Date()), 3),
-            title: 'A long event that spans 2 months',
+            start: addDays(addHours(startOfDay(new Date()), 15), 1),
+            end: addDays(addHours(startOfDay(new Date()), 17), 1),
+            title: 'Another example',
             color: colors.blue
-        },
-        {
-            start: addHours(startOfDay(new Date()), 2),
-            end: new Date(),
-            title: 'A draggable and resizable event',
-            color: colors.yellow,
-            resizable: {
-                beforeStart: true,
-                afterEnd: true
-            },
-            draggable: true
         }
     ];
 

@@ -56,7 +56,7 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                                                      [dayEndMinute]="dayEndMinute"
                                                      [events]="events"
                                                      [viewDate]="day.date"
-                                                     [hourSegments]="2"
+                                                     [hourSegments]="hourSegments"
                                                      [eventWidth]="(weekViewContainer.offsetWidth / 8) / 2"
                     ></iq-calendar-week-hours-day-view>
                 </div>

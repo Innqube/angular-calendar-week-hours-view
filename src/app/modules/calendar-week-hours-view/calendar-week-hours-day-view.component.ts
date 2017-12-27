@@ -85,8 +85,8 @@ export interface DayViewEventResize {
                         </mwl-calendar-day-view-event>
                     </div>
                     <div class="cal-hour"
-                         [class.cal-hour-even]="i % 2 === 0"
-                         [class.cal-hour-odd]="i % 2 === 1"
+                         [class.cal-week-hour-even]="i % 2 === 0"
+                         [class.cal-week-hour-odd]="i % 2 === 1"
                          *ngFor="let hour of hours; let i = index">
                         <iq-calendar-week-hours-day-view-hour-segment
                             *ngFor="let segment of hour.segments"

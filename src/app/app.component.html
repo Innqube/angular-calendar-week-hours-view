@@ -73,6 +73,9 @@
             *ngSwitchCase="'week'"
             [viewDate]="viewDate"
             [events]="events"
+            [hourSegments]="2"
+            [dayStartHour]="8"
+            [dayEndHour]="20"
             [refresh]="refresh">
         </iq-calendar-week-hours-view>
         <mwl-calendar-day-view
