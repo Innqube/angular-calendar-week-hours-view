@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CalendarWeekHoursViewComponent} from './calendar-week-hours-view.component';
-import {CalendarModule} from 'angular-calendar';
+import {CalendarModule, CalendarModuleConfig} from 'angular-calendar';
 import {CalendarWeekHoursViewEventComponent} from './calendar-week-hours-view-event.component';
 import {CalendarWeekHoursDayViewComponent} from './calendar-week-hours-day-view.component';
 import {CalendarWeekHoursDayViewHourSegmentComponent} from './calendar-week-hours-day-view-hour-segment.component';
@@ -29,7 +29,14 @@ import {DragAndDropModule} from 'angular-draggable-droppable';
         CalendarWeekHoursViewEventComponent,
         CalendarWeekHoursDayViewComponent,
         CalendarWeekHoursDayViewHourSegmentComponent
-    ]
+    ],
+    providers: CalendarModule.forRoot().providers
 })
 export class CalendarWeekHoursViewModule {
+    static forRoot(config: CalendarModuleConfig = {}): ModuleWithProviders {
+        return {
+            ngModule: CalendarWeekHoursViewModule,
+            providers: CalendarModule.forRoot().providers
+        };
+    }
 }

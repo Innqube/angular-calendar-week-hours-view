@@ -12,7 +12,7 @@ import {CalendarModule} from 'angular-calendar';
     imports: [
         BrowserModule,
         CalendarModule.forRoot(),
-        CalendarWeekHoursViewModule
+        CalendarWeekHoursViewModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

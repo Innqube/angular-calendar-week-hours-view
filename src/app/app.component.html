@@ -11,8 +11,7 @@
                     class="btn btn-primary"
                     mwlCalendarPreviousView
                     [view]="view"
-                    [(viewDate)]="viewDate"
-                    (viewDateChange)="activeDayIsOpen = false">
+                    [(viewDate)]="viewDate">
                     Previous
                 </div>
                 <div
@@ -25,8 +24,7 @@
                     class="btn btn-primary"
                     mwlCalendarNextView
                     [view]="view"
-                    [(viewDate)]="viewDate"
-                    (viewDateChange)="activeDayIsOpen = false">
+                    [(viewDate)]="viewDate">
                     Next
                 </div>
             </div>
@@ -63,11 +61,7 @@
             *ngSwitchCase="'month'"
             [viewDate]="viewDate"
             [events]="events"
-            [refresh]="refresh"
-            [activeDayIsOpen]="activeDayIsOpen"
-            (dayClicked)="dayClicked($event.day)"
-            (eventClicked)="handleEvent('Clicked', $event.event)"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            [refresh]="refresh">
         </mwl-calendar-month-view>
         <iq-calendar-week-hours-view
             *ngSwitchCase="'week'"
@@ -82,9 +76,7 @@
             *ngSwitchCase="'day'"
             [viewDate]="viewDate"
             [events]="events"
-            [refresh]="refresh"
-            (eventClicked)="handleEvent('Clicked', $event.event)"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            [refresh]="refresh">
         </mwl-calendar-day-view>
     </div>
 </div>
