@@ -25,7 +25,7 @@ const colors: any = {
 })
 export class AppComponent {
 
-    view = 'month';
+    view = 'week';
     viewDate: Date = new Date();
     refresh: Subject<any> = new Subject();
     events: CalendarEvent[] = [
@@ -58,6 +58,5 @@ export class AppComponent {
             draggable: true
         }
     ];
-
 
 }

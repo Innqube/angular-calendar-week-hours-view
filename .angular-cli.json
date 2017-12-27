@@ -20,7 +20,8 @@
             "prefix": "iq",
             "styles": [
                 "styles.css",
-                "../node_modules/angular-calendar/css/angular-calendar.css"
+                "../node_modules/angular-calendar/css/angular-calendar.css",
+                "./app/modules/calendar-week-hours-view/calendar-week-hours-view.component.scss"
             ],
             "scripts": [],
             "environmentSource": "environments/environment.ts",

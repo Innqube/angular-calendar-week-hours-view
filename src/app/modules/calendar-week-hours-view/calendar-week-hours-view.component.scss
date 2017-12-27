@@ -1,0 +1,37 @@
+.cal-week-hours-view {
+
+    .cal-day-headers {
+        display: flex;
+    }
+
+    .cal-header {
+        flex: 1;
+        text-align: center;
+    }
+
+    .cal-header:first-child {
+        flex: 0.5;
+        text-align: center;
+    }
+
+    .cal-days-container {
+        display: flex;
+    }
+
+    .cal-day-container {
+        flex: 1;
+    }
+
+    .cal-day-container:first-child {
+        flex: 0.5;
+    }
+
+    .cal-day-view .cal-hour-odd {
+        background: #ffffff;
+    }
+
+    .cal-day-view .cal-hour-even {
+        background: #fafafa;
+    }
+
+}
