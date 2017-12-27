@@ -1,6 +1,6 @@
-import { AppPage } from './app.po';
+import {AppPage} from './app.po';
 
-describe('angular-calendar-week-hours-view App', () => {
+describe('calendar-week-hours-view App', () => {
   let page: AppPage;
 
   beforeEach(() => {
