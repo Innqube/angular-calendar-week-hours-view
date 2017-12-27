@@ -1,0 +1,4 @@
+{
+    "entry": "./src/app/modules/calendar-week-hours-view/calendar-week-hours-view.component.scss",
+    "dest": "dist/angular-calendar-week-hours-view.scss"
+}
