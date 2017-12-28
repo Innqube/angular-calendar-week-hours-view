@@ -59,6 +59,7 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                                                      [events]="events"
                                                      [viewDate]="day.date"
                                                      [hourSegments]="hourSegments"
+                                                     [hourSegmentHeight]="hourSegmentHeight"
                                                      [eventWidth]="(weekViewContainer.offsetWidth / 8) / 2"
                                                      (eventClicked)="eventClicked.emit($event)"
                                                      (hourSegmentClicked)="hourSegmentClicked.emit($event)"
