@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays} from 'date-fns';
 import {Subject} from 'rxjs/Subject';
-import {CalendarEvent} from 'angular-calendar';
+import {CalendarEvent, CalendarEventTimesChangedEvent} from 'angular-calendar';
 
 const colors: any = {
     red: {
@@ -34,6 +34,11 @@ export class AppComponent {
             end: addHours(startOfDay(new Date()), 10),
             title: 'Patient A',
             color: colors.yellow,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
         },
         {
             start: addHours(startOfDay(new Date()), 10),
@@ -54,5 +59,23 @@ export class AppComponent {
             color: colors.blue
         }
     ];
+
+    eventClicked(event) {
+        console.log(event);
+    }
+
+    hourSegmentClicked(event) {
+        console.log(event);
+    }
+
+    eventTimesChanged({
+                          event,
+                          newStart,
+                          newEnd
+                      }: CalendarEventTimesChangedEvent): void {
+        event.start = newStart;
+        event.end = newEnd;
+        this.refresh.next();
+    }
 
 }

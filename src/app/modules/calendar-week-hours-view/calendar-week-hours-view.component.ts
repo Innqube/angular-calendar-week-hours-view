@@ -2,7 +2,7 @@ import {
     ChangeDetectorRef, Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, Output,
     TemplateRef
 } from '@angular/core';
-import {CalendarEvent, DayViewHour, WeekDay, WeekViewEvent, WeekViewEventRow} from 'calendar-utils';
+import {CalendarEvent, DayViewHour, DayViewHourSegment, WeekDay, WeekViewEvent, WeekViewEventRow} from 'calendar-utils';
 import {Subject} from 'rxjs/Subject';
 import {ResizeEvent} from 'angular-resizable-element';
 import {addDays} from 'date-fns';
@@ -29,7 +29,10 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                     <div class="cal-day-view">
                         <div class="cal-hour-rows">
                             <div class="cal-events">
-                                <div class="cal-hour" *ngFor="let hour of hours">
+                                <div class="cal-hour"
+                                     [class.cal-week-hour-even]="i % 2 === 0"
+                                     [class.cal-week-hour-odd]="i % 2 === 1"
+                                     *ngFor="let hour of hours; let i = index">
                                     <iq-calendar-week-hours-day-view-hour-segment
                                         *ngFor="let segment of hour.segments"
                                         [style.height.px]="hourSegmentHeight"
@@ -37,7 +40,6 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                                         [segmentHeight]="hourSegmentHeight"
                                         [locale]="locale"
                                         [customTemplate]="hourSegmentTemplate"
-                                        (mwlClick)="hourSegmentClicked.emit({date: segment.date})"
                                         [class.cal-drag-over]="segment.dragOver"
                                         mwlDroppable
                                         (dragEnter)="segment.dragOver = true"
@@ -58,7 +60,10 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                                                      [viewDate]="day.date"
                                                      [hourSegments]="hourSegments"
                                                      [eventWidth]="(weekViewContainer.offsetWidth / 8) / 2"
-                    ></iq-calendar-week-hours-day-view>
+                                                     (eventClicked)="eventClicked.emit($event)"
+                                                     (hourSegmentClicked)="hourSegmentClicked.emit($event)"
+                                                     (eventTimesChanged)="eventTimesChanged.emit($event)">
+                    </iq-calendar-week-hours-day-view>
                 </div>
             </div>
         </div>
@@ -169,7 +174,13 @@ export class CalendarWeekHoursViewComponent implements OnChanges, OnInit, OnDest
     @Input() hourSegmentHeight = 30;
 
     /**
-     * Called when a header week day is clicked. Adding a `cssClass` property on `$event.day` will add that class to the header element
+     * A custom template to use to replace the hour segment
+     */
+    @Input() hourSegmentTemplate: TemplateRef<any>;
+
+    /**
+     * Called when a header week day is clicked.
+     * Adding a `cssClass` property on `$event.day` will add that class to the header element
      */
     @Output()
     dayHeaderClicked: EventEmitter<{ day: WeekDay }> = new EventEmitter<{
@@ -182,6 +193,14 @@ export class CalendarWeekHoursViewComponent implements OnChanges, OnInit, OnDest
     @Output()
     eventClicked: EventEmitter<{ event: CalendarEvent }> = new EventEmitter<{
         event: CalendarEvent;
+    }>();
+
+    /**
+     * Called when an hour segment is clicked
+     */
+    @Output()
+    hourSegmentClicked: EventEmitter<{ date: Date }> = new EventEmitter<{
+        date: Date;
     }>();
 
     /**
@@ -447,5 +466,15 @@ export class CalendarWeekHoursViewComponent implements OnChanges, OnInit, OnDest
         this.refreshHeader();
         this.refreshBody();
         this.refreshHourGrid();
+    }
+
+    eventDropped(dropEvent: { dropData?: { event?: CalendarEvent } },
+                 segment: DayViewHourSegment): void {
+        if (dropEvent.dropData && dropEvent.dropData.event) {
+            this.eventTimesChanged.emit({
+                event: dropEvent.dropData.event,
+                newStart: segment.date
+            });
+        }
     }
 }

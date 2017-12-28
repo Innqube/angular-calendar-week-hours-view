@@ -3,12 +3,9 @@
     "lib": {
         "entryFile": "public_api.ts",
         "externals": {
-            "angular-calendar": "angular-calendar",
-            "angular-draggable-droppable": "angular-draggable-droppable",
-            "angular-resizable-element": "angular-resizable-element",
+            "angular-calendar": "angularCalendar",
             "date-fns": "dateFns",
-            "positioning": "positioning",
-            "calendar-utils": "calendar-utils"
+            "calendar-utils": "calendarUtils"
         }
     }
 }
