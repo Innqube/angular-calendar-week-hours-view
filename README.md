@@ -6,7 +6,7 @@ It probably won't receive much support from me (@diegofsza), so you're encourage
 
 ## How it looks
 
-[Imgur](https://i.imgur.com/deXyK1Q.jpg)
+![Imgur](https://i.imgur.com/deXyK1Q.jpg)
 
 ## Usage
 
