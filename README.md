@@ -6,7 +6,7 @@ It probably won't receive much support from me (@diegofsza), so you're encourage
 
 ## How it looks
 
-![Example](https://lh5.googleusercontent.com/Etg4dK6AxEpulp5lP6NBnYRDJRzf5LrzB1Cmwa6c_W8Ccj5LtTPofP4LPwOPZKTiVD1DaO5b88tecpC4hjBt=w1440-h787-rw)
+![Imgur](https://i.imgur.com/deXyK1Q.jpg)
 
 ## Usage
 
