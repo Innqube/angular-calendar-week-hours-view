@@ -1,27 +1,33 @@
 # AngularCalendarWeekHoursView
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+This project aims to provide an alternative view to those already provided on [Angular Calendar](https://github.com/mattlewis92/angular-calendar).
 
-## Development server
+It probably won't receive much support from me (@diegofsza), so you're encouraged to enhance it in any reasonable way and send pull requests.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How it looks
 
-## Code scaffolding
+![Example](https://lh5.googleusercontent.com/Etg4dK6AxEpulp5lP6NBnYRDJRzf5LrzB1Cmwa6c_W8Ccj5LtTPofP4LPwOPZKTiVD1DaO5b88tecpC4hjBt=w1440-h787-rw)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+Import the module wherever you want to use the view:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```javascript
+@NgModule({
+    declarations: [
+        ...
+    ],
+    imports: [
+        ...,
+        CalendarModule.forRoot(),
+        CalendarWeekHoursViewModule,
+        ...
+    ],   
+})
+```
 
-## Running unit tests
+You should also include the scss file in your styles array in the .angular-cli.json file
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```javascript
+"../node_modules/angular-calendar-week-hours-view/angular-calendar-week-hours-view.scss"
+```
