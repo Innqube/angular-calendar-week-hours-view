@@ -26,6 +26,23 @@ Import the module wherever you want to use the view:
 })
 ```
 
+Use the view in your html
+
+```html
+<iq-calendar-week-hours-view
+            *ngSwitchCase="'week'"
+            [viewDate]="viewDate"
+            [events]="events"
+            [hourSegments]="2"
+            [dayStartHour]="8"
+            [dayEndHour]="20"
+            (eventClicked)="eventClicked($event)"
+            (hourSegmentClicked)="hourSegmentClicked($event)"
+            (eventTimesChanged)="eventTimesChanged($event)"
+            [refresh]="refresh">
+        </iq-calendar-week-hours-view>
+```
+
 You should also include the scss file in your styles array in the .angular-cli.json file
 
 ```javascript
