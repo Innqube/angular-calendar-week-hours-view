@@ -63,7 +63,9 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                                                      [eventWidth]="(weekViewContainer.offsetWidth / 8) / 2"
                                                      (eventClicked)="eventClicked.emit($event)"
                                                      (hourSegmentClicked)="hourSegmentClicked.emit($event)"
-                                                     (eventTimesChanged)="eventTimesChanged.emit($event)">
+                                                     (eventTimesChanged)="eventTimesChanged.emit($event)"
+                                                     [eventTitleTemplate]="eventTitleTemplate"
+                                                     [eventTemplate]="eventTemplate">
                     </iq-calendar-week-hours-day-view>
                 </div>
             </div>
@@ -445,7 +447,7 @@ export class CalendarWeekHoursViewComponent implements OnChanges, OnInit, OnDest
             excluded: this.excludeDays,
             precision: this.precision,
             absolutePositionedEvents: true
-        });
+        }).eventRows;
     }
 
     private refreshHourGrid(): void {
