@@ -62,7 +62,7 @@
         "tslint": "~5.7.0",
         "typescript": "~2.4.2"
     },
-    "peerDependency": {
+    "peerDependencies": {
         "angular-calendar": "^0.22.3",
         "angular-draggable-droppable": "^2.0.0",
         "angular-resizable-element": "^2.0.0"
