@@ -41,22 +41,70 @@ export class AppComponent {
             }
         },
         {
+            start: addHours(startOfDay(new Date()), 10.5),
+            end: addHours(startOfDay(new Date()), 11.5),
+            title: 'Patient C',
+            color: colors.yellow,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
+        },
+        {
+            start: addHours(startOfDay(new Date()), 11),
+            end: addHours(startOfDay(new Date()), 12),
+            title: 'Patient D',
+            color: colors.yellow,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
+        },
+        {
+            start: addHours(startOfDay(new Date()), 10),
+            end: addHours(startOfDay(new Date()), 11),
+            title: 'Patient E',
+            color: colors.yellow,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
+        },
+        {
             start: addHours(startOfDay(new Date()), 10),
             end: addHours(startOfDay(new Date()), 11),
             title: 'Patient B',
             color: colors.yellow,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
         },
         {
             start: addHours(startOfDay(new Date()), 9.5),
             end: addHours(startOfDay(new Date()), 10.5),
             title: 'Simoultaneous',
             color: colors.red,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
         },
         {
             start: addDays(addHours(startOfDay(new Date()), 15), 1),
             end: addDays(addHours(startOfDay(new Date()), 17), 1),
             title: 'Another example',
-            color: colors.blue
+            color: colors.blue,
+            draggable: true,
+            resizable: {
+                beforeStart: true,
+                afterEnd: true
+            }
         }
     ];
 

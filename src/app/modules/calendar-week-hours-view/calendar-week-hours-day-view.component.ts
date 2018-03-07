@@ -442,7 +442,7 @@ export class CalendarWeekHoursDayViewComponent
     }
 
     private refreshView(): void {
-        this.view = this.utils.getDayView({
+        const originalDayView = this.utils.getDayView({
             events: this.events,
             viewDate: this.viewDate,
             hourSegments: this.hourSegments,
@@ -457,6 +457,50 @@ export class CalendarWeekHoursDayViewComponent
             eventWidth: this.eventWidth,
             segmentHeight: this.hourSegmentHeight
         });
+
+        originalDayView.events.forEach((event: any) => {
+            if (event.isProcessed) {
+                return;
+            }
+            this.scaleOverlappingEvents(event.event.start, event.event.end, originalDayView.events);
+        });
+
+        this.view = originalDayView;
+    }
+
+    private scaleOverlappingEvents(startTime: Date, endTime: Date, events): void {
+        let newStartTime: Date = startTime;
+        let newEndTime: Date = endTime;
+        const overlappingEvents: DayViewEvent[] = [];
+        let maxLeft = 0;
+        events.forEach((event) => {
+            if (event.isProcessed) {
+                return;
+            }
+            if (event.event.start < startTime && event.event.end > startTime) {
+                newStartTime = event.event.start;
+            } else if (event.event.end > endTime && event.event.start < endTime) {
+                newEndTime = event.event.end;
+            } else if (event.event.end <= endTime && event.event.start >= startTime) {
+                // Nothing, but remove condition and add equals to above two for overlapping effect
+            } else {
+                return;
+            }
+            if (event.left > maxLeft) {
+                maxLeft = event.left;
+            }
+            overlappingEvents.push(event);
+        });
+        if (startTime === newStartTime && endTime === newEndTime) {
+            const divisorFactor = Math.floor(maxLeft / this.eventWidth) + 1;
+            overlappingEvents.forEach((event: any) => {
+                event.isProcessed = true;
+                event.left /= divisorFactor;
+                event.width /= divisorFactor;
+            });
+        } else {
+            this.scaleOverlappingEvents(newStartTime, newEndTime, events);
+        }
     }
 
     private refreshAll(): void {
