@@ -1,6 +1,6 @@
 {
     "name": "angular-calendar-week-hours-view",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "license": "MIT",
     "author": "Innqube",
     "keywords": [
@@ -65,8 +65,8 @@
         "tslint": "~5.7.0",
         "typescript": "~2.4.2"
     },
-    "peerDependency": {
-        "angular-calendar": "^0.23.2",
+    "peerDependencies": {
+        "angular-calendar": "^0.22.3",
         "angular-draggable-droppable": "^2.0.0",
         "angular-resizable-element": "^2.0.0"
     }
