@@ -1,5 +1,14 @@
 import {
-    ChangeDetectorRef, Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, Output,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    LOCALE_ID,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Output,
     TemplateRef
 } from '@angular/core';
 import {CalendarEvent, DayViewHour, DayViewHourSegment, WeekDay, WeekViewEvent, WeekViewEventRow} from 'calendar-utils';
@@ -51,7 +60,11 @@ import {CalendarDragHelper} from 'angular-calendar/modules/common/calendar-drag-
                         </div>
                     </div>
                 </div>
-                <div class="cal-day-container" *ngFor="let day of days">
+                <div class="cal-day-container"
+                     [class.cal-past]="day.isPast"
+                     [class.cal-today]="day.isToday"
+                     [class.cal-future]="day.isFuture"
+                     *ngFor="let day of days">
                     <iq-calendar-week-hours-day-view [dayStartHour]="dayStartHour"
                                                      [dayStartMinute]="dayStartMinute"
                                                      [dayEndHour]="dayEndHour"
