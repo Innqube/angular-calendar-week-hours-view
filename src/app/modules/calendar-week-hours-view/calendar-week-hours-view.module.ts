@@ -12,9 +12,9 @@ import {DragAndDropModule} from 'angular-draggable-droppable';
 @NgModule({
     imports: [
         CommonModule,
-        CalendarModule.forRoot(),
+        CalendarModule,
         ResizableModule,
-        DragAndDropModule.forRoot()
+        DragAndDropModule
     ],
     declarations: [
         CalendarWeekHoursViewComponent,

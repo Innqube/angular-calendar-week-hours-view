@@ -2,10 +2,7 @@
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "lib": {
         "entryFile": "public_api.ts",
-        "externals": {
-            "angular-calendar": "angularCalendar",
-            "date-fns": "dateFns",
-            "calendar-utils": "calendarUtils"
-        }
-    }
+        "comments" : "none"
+    },
+    "whitelistedNonPeerDependencies": ["angular","core-js", "rxjs", "zone.js"]
 }
